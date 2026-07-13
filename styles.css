@@ -34,6 +34,16 @@ a { color: #3182f6; }
 }
 .cards span { color: #6b7684; }
 .contact { padding: 20px; border-radius: 16px; background: #f2f4f6; font-size: 18px; font-weight: 700; }
+.room-code {
+  padding: 24px;
+  border-radius: 18px;
+  background: #fff0f5;
+  color: #d6336c;
+  font-size: clamp(32px, 10vw, 52px);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 12px; border: 1px solid #e5e8eb; text-align: left; vertical-align: top; }
 th { background: #f7f8fa; }

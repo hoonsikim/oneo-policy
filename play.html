@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘은너 방 참가</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">오늘은너 · 오너게임</p>
+      <h1>같이 할 방이 도착했어</h1>
+      <p>오늘은너 앱을 열고 아래 방 코드를 입력해줘.</p>
+      <p class="room-code" id="room-code" aria-live="polite">방 코드 확인 중…</p>
+      <p id="invalid-code" hidden>유효한 방 코드가 없어. 보낸 사람에게 링크를 다시 요청해줘.</p>
+      <nav class="cards" aria-label="도움말">
+        <a href="./support.html"><strong>앱 이용 도움</strong><span>고객지원</span></a>
+      </nav>
+      <footer>운영자 김시훈 · 오늘은너</footer>
+    </main>
+    <script>
+      const code = new URLSearchParams(window.location.search).get('room')?.toUpperCase()
+      const valid = code && /^[A-Z2-9]{4,6}$/.test(code)
+      document.querySelector('#room-code').textContent = valid ? code : '방 코드 없음'
+      document.querySelector('#invalid-code').hidden = Boolean(valid)
+    </script>
+  </body>
+</html>
