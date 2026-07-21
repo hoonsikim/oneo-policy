@@ -10,7 +10,14 @@
     <main>
       <p class="eyebrow">오늘은너 · 오너게임</p>
       <h1>같이 할 방이 도착했어</h1>
-      <p>오늘은너 앱을 열고 아래 방 코드를 입력해줘.</p>
+      <p>토스가 설치되어 있으면 바로 오늘은너 방으로 이동해.</p>
+      <a class="primary-cta" id="open-toss" href="intoss://oneogame-app">토스에서 방 입장</a>
+      <p class="install-guide">토스가 없다면 먼저 설치한 뒤 이 링크를 다시 눌러줘.</p>
+      <nav class="store-links" aria-label="토스 설치">
+        <a href="https://play.google.com/store/apps/details?id=viva.republica.toss">Android에서 토스 설치</a>
+        <a href="https://apps.apple.com/kr/app/id839333328">iPhone에서 토스 설치</a>
+      </nav>
+      <p class="fallback-label">연결되지 않을 때 입력할 방 코드</p>
       <p class="room-code" id="room-code" aria-live="polite">방 코드 확인 중…</p>
       <p id="invalid-code" hidden>유효한 방 코드가 없어. 보낸 사람에게 링크를 다시 요청해줘.</p>
       <nav class="cards" aria-label="도움말">
@@ -19,10 +26,22 @@
       <footer>운영자 김시훈 · 오늘은너</footer>
     </main>
     <script>
-      const code = new URLSearchParams(window.location.search).get('room')?.toUpperCase()
+      const search = new URLSearchParams(window.location.search)
+      const code = search.get('room')?.toUpperCase()
       const valid = code && /^[A-Z2-9]{4,6}$/.test(code)
       document.querySelector('#room-code').textContent = valid ? code : '방 코드 없음'
       document.querySelector('#invalid-code').hidden = Boolean(valid)
+
+      const deepLink = new URL('intoss://oneogame-app')
+      for (const key of ['room', 'v', 'ev', 'src']) {
+        const value = search.get(key)
+        if (value) deepLink.searchParams.set(key, key === 'room' ? value.toUpperCase() : value)
+      }
+      const openButton = document.querySelector('#open-toss')
+      openButton.href = deepLink.toString()
+      if (!valid) {
+        openButton.textContent = '토스에서 오늘은너 열기'
+      }
     </script>
   </body>
 </html>
