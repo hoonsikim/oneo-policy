@@ -44,6 +44,33 @@ a { color: #3182f6; }
   letter-spacing: 0.12em;
   text-align: center;
 }
+.primary-cta {
+  display: block;
+  margin: 28px 0 12px;
+  padding: 17px 20px;
+  border-radius: 16px;
+  background: #3182f6;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+}
+.install-guide, .fallback-label { color: #6b7684; }
+.fallback-label { margin-top: 32px; font-weight: 700; }
+.store-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.store-links a {
+  padding: 10px 12px;
+  border: 1px solid #d1d6db;
+  border-radius: 12px;
+  color: #4e5968;
+  font-weight: 700;
+  text-decoration: none;
+}
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 12px; border: 1px solid #e5e8eb; text-align: left; vertical-align: top; }
 th { background: #f7f8fa; }
